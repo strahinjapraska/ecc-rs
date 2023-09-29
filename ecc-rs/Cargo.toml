@@ -1,0 +1,17 @@
+[package]
+name = "ecc-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+num-bigint = "0.4.4"
+
+[[test]]
+name = "finite_field_tests"
+path = "src/tests/finite_field_tests.rs"
+
+[[test]]
+name = "elliptic_curve_tests"
+path = "src/tests/elliptic_curve_tests.rs"
