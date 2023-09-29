@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod finite_field_tests{ 
-    use ecc_rs::finite_field::*;
+    use elliptic_curve::finite_field::*;
     use num_bigint::BigUint;  
 
 
