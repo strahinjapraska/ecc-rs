@@ -1,12 +1,16 @@
 [package]
-name = "elliptic_curve"
+name = "elliptic_curve_cryptography"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-num-bigint = "0.4.4"
+rand = "0.8.5" 
+num-bigint = { version = "0.4.4", features=["rand"] }
+sha256 = "1.4.0"  
+hex = "0.4.3"
+
 
 [[test]]
 name = "finite_field_tests"
@@ -15,3 +19,7 @@ path = "src/tests/finite_field_tests.rs"
 [[test]]
 name = "elliptic_curve_tests"
 path = "src/tests/elliptic_curve_tests.rs"
+
+[[test]]
+name = "ecdsa_tests" 
+path = "src/tests/ecdsa_tests.rs" 
