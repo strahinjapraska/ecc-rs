@@ -23,3 +23,7 @@ path = "src/tests/elliptic_curve_tests.rs"
 [[test]]
 name = "ecdsa_tests" 
 path = "src/tests/ecdsa_tests.rs" 
+
+[[bin]]
+name = "ecdhe_demo"
+path = "src/demo/ecdhe_demo.rs" 

@@ -13,7 +13,7 @@ pub struct EllipticCurve{
     pub a:BigUint, 
     pub b:BigUint, 
     pub p:BigUint
-    // y**2 = x**2 + a*x + b (mod p ) 
+    // y**2 = x**3 + a*x + b (mod p ) 
 }
 
 impl EllipticCurve{
