@@ -2,6 +2,7 @@ use super::elliptic_curve::{EllipticCurve, Point};
 use num_bigint::{BigUint, RandBigInt}; 
 use rand::{self}; 
 
+
 pub struct ECDHE{
 
     pub ec: EllipticCurve, // Elliptic curve that Alice and Bob have agreed on 
