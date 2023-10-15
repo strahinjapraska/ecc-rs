@@ -6,7 +6,7 @@ General testing:
 
 <code>cargo test</code> for all tests 
 
-<code>cargo test --test test_name </code> test name can be: finite_field_tests, elliptic_curve_tests, ecdsa_tests
+<code>cargo test --test test_name --release</code> test name can be: finite_field_tests, elliptic_curve_tests, ecdsa_tests, ecdhe_tests
 
 1. Elliptic curve in Weierstress form y^2 = x^3 + ax + b over Finite Field Fp 
 2. <b>ECDSA</b>(Elliptic Curve Digital Signature Algorithm)
@@ -19,6 +19,3 @@ General testing:
 
 <code> cargo run --bin ecdhe_demo </code>
 
-- For testing:
-  
-<code> cargo test ecdhe </code> 
