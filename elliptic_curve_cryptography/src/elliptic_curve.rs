@@ -9,6 +9,7 @@ pub enum Point{
     // P(x,y)
 
 }
+#[derive(Clone)]
 pub struct EllipticCurve{
     pub a:BigUint, 
     pub b:BigUint, 

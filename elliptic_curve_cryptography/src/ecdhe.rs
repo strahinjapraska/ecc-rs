@@ -41,8 +41,13 @@ impl ECDHE {
 
     pub fn compute_shared_secret(&self, p_y: &Point, x: &BigUint) -> BigUint {
 
+      
+        if *p_y == Point::Identity{
+            panic!("Public key cannot be identity"); 
+        }
+        
         let p_xy = self.ec.scalar_mul(x,p_y); 
-
+        
 
         if let Point::Coor(x_coord,_) = p_xy{
             return x_coord;
@@ -101,8 +106,12 @@ mod test{
 
         let p_b = Point::Coor(BigUint::parse_bytes(b"42ea6dd9969dd2a61fea1aac7f8e98edcc896c6e55857cc0",16).expect("Failed to parse"),
                                      BigUint::parse_bytes(b"dfbe5d7c61fac88b11811bde328e8a0d12bf01a9d204b523",16).expect("Failed to parse")); 
+        
+     
         let shared_secret = BigUint::parse_bytes(b"803d8ab2e5b6e6fca715737c3a82f7ce3c783124f6d51cd0", 16).expect("Failed to parse");
-        assert_eq!(ecdh.compute_shared_secret(&p_b, &a),shared_secret); 
+        assert_eq!(ecdh.compute_shared_secret(&p_b, &a),shared_secret);
+
+         
 
 
         
