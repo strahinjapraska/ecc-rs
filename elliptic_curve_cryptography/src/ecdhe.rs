@@ -1,7 +1,9 @@
+use std::hash;
+
 use super::elliptic_curve::{EllipticCurve, Point}; 
 use num_bigint::{BigUint, RandBigInt}; 
 use rand::{self}; 
-
+use super::utils::*; 
 
 pub struct ECDHE{
 
@@ -16,7 +18,8 @@ impl ECDHE {
     
     pub fn generate_key_pair(&self) -> (BigUint,Point) {
         
-        let x = self.generate_random_num(&self.q); // random x in [1...q-1]
+      
+        let x = generate_random_num_in_range(&BigUint::from(1u32), &self.q); 
 
         let p_x = self.compute_pk(&x); 
 
@@ -31,21 +34,10 @@ impl ECDHE {
 
     }
     
-
-    pub fn generate_random_num(&self, max: &BigUint) -> BigUint{
-
-        let mut rng = rand::thread_rng(); 
-        rng.gen_biguint_range(&BigUint::from(1u32), max)
-
-    }
-
     pub fn compute_shared_secret(&self, p_y: &Point, x: &BigUint) -> BigUint {
 
       
-        if *p_y == Point::Identity{
-            panic!("Public key cannot be identity"); 
-        }
-        
+     
         let p_xy = self.ec.scalar_mul(x,p_y); 
         
 
@@ -55,6 +47,13 @@ impl ECDHE {
 
         panic!("Point cannot be identity");
     } 
+
+    pub fn exchange_shared_secret(&self, p_y: &Point, x: &BigUint) -> String{
+
+        let shared_secret = self.compute_shared_secret(p_y, x); 
+        hash_value(&shared_secret)
+
+    }
  
 }
 
@@ -107,6 +106,7 @@ mod test{
         let p_b = Point::Coor(BigUint::parse_bytes(b"42ea6dd9969dd2a61fea1aac7f8e98edcc896c6e55857cc0",16).expect("Failed to parse"),
                                      BigUint::parse_bytes(b"dfbe5d7c61fac88b11811bde328e8a0d12bf01a9d204b523",16).expect("Failed to parse")); 
         
+     
      
         let shared_secret = BigUint::parse_bytes(b"803d8ab2e5b6e6fca715737c3a82f7ce3c783124f6d51cd0", 16).expect("Failed to parse");
         assert_eq!(ecdh.compute_shared_secret(&p_b, &a),shared_secret);

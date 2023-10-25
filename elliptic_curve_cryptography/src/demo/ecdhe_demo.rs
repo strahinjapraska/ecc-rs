@@ -1,7 +1,6 @@
 use elliptic_curve_cryptography::ecdhe::ECDHE; 
 use num_bigint::BigUint;  
-use elliptic_curve_cryptography::elliptic_curve::{Point,EllipticCurve}; 
-use sha256::digest; 
+use elliptic_curve_cryptography::elliptic_curve::{Point,EllipticCurve};  
 
 fn main(){
 
@@ -31,14 +30,13 @@ fn main(){
     let (a,p_a) = ecdh.generate_key_pair(); // Alice kpriv, kpub
     let (b, p_b) = ecdh.generate_key_pair(); // Bob kpriv, kpub 
 
-    let shared_secret_a = ecdh.compute_shared_secret(&p_b, &a); // Alice computes a(bP) 
-    let shared_secret_b = ecdh.compute_shared_secret(&p_a, &b); // Bob computes b(aP)
 
-    // Use hashing function to get 256 bits 
-    let hash_a = digest(BigUint::to_bytes_le(&shared_secret_a));
-    let hash_b = digest(BigUint::to_bytes_le(&shared_secret_b));
+    let shared_secret_a = ecdh.exchange_shared_secret(&p_b, &a); 
+    let shared_secret_b = ecdh.exchange_shared_secret(&p_a, &b); 
+
+
     
-    assert_eq!(hash_a,hash_b); 
+    assert_eq!(shared_secret_a, shared_secret_b); 
 
 
 
