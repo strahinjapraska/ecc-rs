@@ -7,7 +7,7 @@ pub fn generate_random_num_in_range(lowerbound: &BigUint, upperbound: &BigUint) 
         rng.gen_biguint_range(lowerbound, upperbound)
 }
 
-pub fn hash_value(val: &BigUint) -> String{
+pub fn hash_biguint(val: &BigUint) -> String{
         digest(BigUint::to_bytes_le(val)) 
 }
 

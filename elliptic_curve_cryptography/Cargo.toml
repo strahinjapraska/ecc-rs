@@ -29,6 +29,9 @@ path = "src/tests/ecdsa_tests.rs"
 name = "ecdhe_tests" 
 path = "src/tests/ecdhe_tests/ecdhe_tests.rs" 
 
+[[test]]
+name = "kdf2_tests" 
+path = "src/tests/kdf2_tests.rs" 
 
 [[bin]]
 name = "ecdhe_demo"

@@ -1,8 +1,5 @@
-use std::hash;
-
 use super::elliptic_curve::{EllipticCurve, Point}; 
-use num_bigint::{BigUint, RandBigInt}; 
-use rand::{self}; 
+use num_bigint::BigUint;  
 use super::utils::*; 
 
 pub struct ECDHE{
@@ -51,7 +48,7 @@ impl ECDHE {
     pub fn exchange_shared_secret(&self, p_y: &Point, x: &BigUint) -> String{
 
         let shared_secret = self.compute_shared_secret(p_y, x); 
-        hash_value(&shared_secret)
+        hash_biguint(&shared_secret)
 
     }
  
