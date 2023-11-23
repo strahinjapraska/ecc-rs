@@ -11,3 +11,6 @@ pub fn hash_biguint(val: &BigUint) -> String{
         digest(BigUint::to_bytes_le(val)) 
 }
 
+pub fn hex_to_biguint(hex: &str) -> BigUint{
+        BigUint::parse_bytes(hex.replace(" ", "").as_bytes(), 16).expect("Invalid hex")
+}

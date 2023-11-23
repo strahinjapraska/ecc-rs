@@ -1,22 +1,28 @@
 # ecc-rs
 
-Implementation of Elliptic Curves Cryptography in Rust, study project, don't use for real world crypto.
+Implementation of Elliptic Curve Cryptography library in Rust.
 
-General testing: 
-
-<code>cargo test</code> for all tests 
-
-<code>cargo test --test test_name --release</code> test name can be: finite_field_tests, elliptic_curve_tests, ecdsa_tests, ecdhe_tests
-
-1. Elliptic curve in Weierstress form y^2 = x^3 + ax + b over Finite Field Fp
+1. Elliptic curve in Weierstress form y^2 = x^3 + ax + b over Finite Field(Fp) 
 2. <b>ECDSA</b>(Elliptic Curve Digital Signature Algorithm)
+3. <b>ECDHE</b>(Ellpitic Curve Diffie Hellman Ephemeral [1] (use Elliptic curves with cofactor h = 1, e.g. NIST P-521 [3], more on this [2])
+4. <b>ECIES</b> (Elliptic Curve Integrated Encryption Scheme, [4]
+5. <b>KDF2</b> (Key derivation function 2), [5]
 
-3. <b>ECDHE</b>(Ellpitic Curve Diffie Hellman Ephemeral,  with cofactor h = 1, more on this http://www.secg.org/sec1-v2.pdf,
-   implementation from the book <b>Elliptic Curves: Number Theory and Cryptography, 2nd Edition, Lawrence C. Washington, Page 170</b> 
 
-- To run the demo: 
+Run all tests: 
 
-<code> cargo build</code>
+```bash
+cargo test
+```
 
-<code> cargo run --bin ecdhe_demo </code>
+For individual tests: <b>test_name</b> options = finite_field_tests, elliptic_curve_tests, ecdsa_tests, ecdhe_test
+```bash 
+cargo test --test test_name --release
+```
 
+<b>Resources</b>: 
+1. Elliptic Curves: Number Theory and Cryptography, 2nd Edition, Lawrence C. Washington, https://www.iacr.org/books/2010_tf_Washington_ECC.pdf
+2. SEC 1: Elliptic Curve Cryptography, http://www.secg.org/sec1-v2.pdf
+3. NIST P-512 parameters,  https://neuromancer.sk/std/nist/P-521
+4. A Survey of the Elliptic Curve Integrated Encryption Scheme, https://www.researchgate.net/publication/255970113_A_Survey_of_the_Elliptic_Curve_Integrated_Encryption_Scheme
+5. DRAFT ISO/IEC 18033-2, https://www.shoup.net/iso/std4.pdf

@@ -10,7 +10,8 @@ rand = "0.8.5"
 num-bigint = { version = "0.4.4", features=["rand"] }
 sha256 = "1.4.0"  
 hex = "0.4.3"
-
+hmac="0.11.0"
+sha2="0.10.8" 
 
 [[test]]
 name = "finite_field_tests"
@@ -32,6 +33,10 @@ path = "src/tests/ecdhe_tests/ecdhe_tests.rs"
 [[test]]
 name = "kdf2_tests" 
 path = "src/tests/kdf2_tests.rs" 
+
+[[test]]
+name = "chaum_pedersen_tests"
+path = "src/tests/chaum_pedersen_tests.rs"
 
 [[bin]]
 name = "ecdhe_demo"

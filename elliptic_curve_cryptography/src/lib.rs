@@ -5,4 +5,5 @@ pub mod ecdhe;
 pub mod ecies;
 pub mod utils;  
 pub mod kdf2; 
+pub mod chaum_pedersen;
 
