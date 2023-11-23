@@ -7,6 +7,7 @@ Implementation of Elliptic Curve Cryptography library in Rust.
 3. <b>ECDHE</b>(Ellpitic Curve Diffie Hellman Ephemeral [1] (use Elliptic curves with cofactor h = 1, e.g. NIST P-521 [3], more on this [2])
 4. <b>ECIES</b> (Elliptic Curve Integrated Encryption Scheme, [4]
 5. <b>KDF2</b> (Key derivation function 2), [5]
+6. <b>Chaum Pedersen </b> 
 
 
 Run all tests: 
