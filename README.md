@@ -27,3 +27,4 @@ cargo test --test test_name --release
 3. NIST P-512 parameters,  https://neuromancer.sk/std/nist/P-521
 4. A Survey of the Elliptic Curve Integrated Encryption Scheme, https://www.researchgate.net/publication/255970113_A_Survey_of_the_Elliptic_Curve_Integrated_Encryption_Scheme
 5. DRAFT ISO/IEC 18033-2, https://www.shoup.net/iso/std4.pdf
+6. https://github.com/conz27/crypto-test-vectors/tree/master
