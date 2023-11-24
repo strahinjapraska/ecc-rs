@@ -16,7 +16,7 @@ Run all tests:
 cargo test
 ```
 
-For individual tests: <b>test_name</b> options = finite_field_tests, elliptic_curve_tests, ecdsa_tests, ecdhe_test
+For individual tests: <b>test_name</b> options = finite_field_tests, elliptic_curve_tests, ecdsa_tests, ecdhe_test, ecies_tests, chaum_pedersen_tests, kdf2_tests
 ```bash 
 cargo test --test test_name --release
 ```
@@ -28,3 +28,5 @@ cargo test --test test_name --release
 4. A Survey of the Elliptic Curve Integrated Encryption Scheme, https://www.researchgate.net/publication/255970113_A_Survey_of_the_Elliptic_Curve_Integrated_Encryption_Scheme
 5. DRAFT ISO/IEC 18033-2, https://www.shoup.net/iso/std4.pdf
 6. https://github.com/conz27/crypto-test-vectors/tree/master
+7. https://www.rfc-editor.org/rfc/rfc5114.txt
+8. https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/component-testing
