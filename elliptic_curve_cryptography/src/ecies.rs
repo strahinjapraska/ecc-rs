@@ -1,6 +1,10 @@
 use super::elliptic_curve::{EllipticCurve, Point}; 
 use num_bigint::BigUint;
 use super::kdf2::derive; 
+use rand::{Rng, thread_rng}; 
+use aes::Aes128;
+use ccm::aead::{Aead, KeyInit, generic_array::GenericArray};
+use ccm::consts::{U10,U12}; 
 
 use super::ecdhe::ECDHE; 
 
@@ -16,7 +20,22 @@ pub struct ECIES{
 impl ECIES{
   
 
-    pub fn encrypt(&self, p_v: &Point) -> (Point, BigUint, BigUint){
+    fn f(k: &String,m: &str, iv: &[u8;12]) -> String{
+        
+        let iv: GenericArray<u8, U12> = GenericArray::clone_from_slice(iv);
+        
+        let key_bytes = hex::decode(k).unwrap();
+        let key_bytes = GenericArray::from_slice(&key_bytes);
+
+        type Aesccm = ccm::Ccm<Aes128, U10, U12>; 
+        let cipher = Aesccm::new(&key_bytes);
+
+        let ciphertext = cipher.encrypt(&iv, m.as_bytes());
+
+        return hex::encode(&ciphertext.unwrap());
+
+    }
+    pub fn encrypt(&self, p_v: &Point, m: &str) -> (Point, String, String){
 
         let key_agreement = ECDHE{
             ec: self.ec.clone(), 
@@ -28,18 +47,41 @@ impl ECIES{
 
         let shared_secret = key_agreement.compute_shared_secret(p_v, &s_u);
 
-        let _derived_material = derive(&shared_secret.to_str_radix(16),128/8+256/8,"");
+     
+        let derived_material = derive(&shared_secret.to_str_radix(16),128/8,"");
 
-        (p_u,   BigUint::from(0u32), BigUint::from(0u32)) 
+        let mut iv = [0u8; 12]; 
+        thread_rng().fill(&mut iv);
+     
+
+        let c = Self::f(&derived_material, &m, &iv);
+
+        (p_u, hex::encode(iv), c)
 
 
        
     }
 
 
-    pub fn decrypt(&self) -> BigUint{
+    pub fn decrypt(&self, c: &String ,iv: &String, p_u: &Point, s_v: &BigUint) -> String{
 
-        todo!(); 
+        let key_agreement = ECDHE{
+            ec: self.ec.clone(), 
+            q: self.q.clone(), 
+            g: self.g.clone()
+        }; 
+
+        let shared_secret = key_agreement.compute_shared_secret(p_u, s_v);
+
+
+        let derived_material = derive(&shared_secret.to_str_radix(16),128/8,"");
+
+        let bytes = hex::decode(iv).unwrap();
+
+        let mut iv = [0u8; 12];
+        iv.copy_from_slice(&bytes[0..12]); 
+
+        Self::f(&derived_material, &c, &iv)
 
     }
 
@@ -65,13 +107,27 @@ mod test{
         let q = BigUint::parse_bytes(b"ffffffffffffffffffffffff99def836146bc9b1b4d22831",16).expect("Failed to parse q"); 
 
         let scheme = ECIES{
-            ec: ec_p_192, 
-            g,
-            q 
+            ec: ec_p_192.clone(), 
+            g: g.clone(),
+            q: q.clone() 
 
         };
 
-        scheme.encrypt(&Point::Coor(BigUint::from(1u32),BigUint::from(1u32))); 
+        let key_agreement = ECDHE{
+            ec: ec_p_192.clone(), 
+            g: g.clone(), 
+            q: q.clone()
+        };
+
+        let (s_v ,p_v) = key_agreement.generate_key_pair();
+
+        let m = "Message m"; 
+
+        let (p_u, c, iv) = scheme.encrypt(&p_v, &m); 
+
+        let pt = scheme.decrypt(&c, &iv, &p_u, &s_v); 
+
+        assert_eq!(String::from_utf8_lossy(&hex::decode(pt).unwrap()),m); 
 
         
 
