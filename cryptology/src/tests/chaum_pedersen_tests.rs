@@ -4,8 +4,8 @@ mod test{
 
 
     use num_bigint::BigUint; 
-    use elliptic_curve_cryptography::chaum_pedersen::*;
-    use elliptic_curve_cryptography::utils::*;  
+    use cryptology::chaum_pedersen::*;
+    use cryptology::utils::*;  
 
 
     #[test]

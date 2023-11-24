@@ -1,5 +1,5 @@
 [package]
-name = "elliptic_curve_cryptography"
+name = "cryptology"
 version = "0.1.0"
 edition = "2021"
 
@@ -40,6 +40,13 @@ path = "src/tests/kdf2_tests.rs"
 name = "chaum_pedersen_tests"
 path = "src/tests/chaum_pedersen_tests.rs"
 
+
+[[test]]
+name = "ecies_tests"
+path = "src/tests/ecies_tests.rs"
+
+
 [[bin]]
 name = "ecdhe_demo"
 path = "src/demo/ecdhe_demo.rs" 
+

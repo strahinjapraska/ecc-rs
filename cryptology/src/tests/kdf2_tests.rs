@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod test{
 
-    use elliptic_curve_cryptography::kdf2::*; 
+    use cryptology::kdf2::*; 
 
     #[test]
     fn test_kdf2_1(){

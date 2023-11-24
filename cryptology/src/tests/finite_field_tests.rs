@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod finite_field_tests{ 
-    use elliptic_curve_cryptography::finite_field::*;
+    use cryptology::finite_field::*;
     use num_bigint::BigUint;  
    
 

@@ -1,6 +1,6 @@
-use elliptic_curve_cryptography::ecdhe::ECDHE; 
+use cryptology::ecdhe::ECDHE; 
 use num_bigint::BigUint;  
-use elliptic_curve_cryptography::elliptic_curve::{Point,EllipticCurve};  
+use cryptology::elliptic_curve::{Point,EllipticCurve};  
 
 fn main(){
 
