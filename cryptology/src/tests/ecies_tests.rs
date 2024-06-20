@@ -1,10 +1,11 @@
 #[cfg(test)]
 mod test{
 
-    use cryptology::ecdhe::ECDHE; 
-    use cryptology::ecies::ECIES;
+    use cryptology::schemes::key_exchange::ecdhe::ECDHE; 
+    use cryptology::schemes::encryption::ecies::ECIES;
+    use cryptology::core::math::elliptic_curve::{EllipticCurve,Point};
     use num_bigint::BigUint; 
-    use cryptology::elliptic_curve::*; 
+    
 
     #[test]
     fn test_ecies_1(){

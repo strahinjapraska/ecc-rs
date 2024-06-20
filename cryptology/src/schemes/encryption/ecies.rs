@@ -1,12 +1,12 @@
-use super::elliptic_curve::{EllipticCurve, Point}; 
 use num_bigint::BigUint;
-use super::kdf2::derive; 
 use rand::{Rng, thread_rng}; 
 use aes::Aes128;
 use ccm::aead::{Aead, KeyInit, generic_array::GenericArray};
 use ccm::consts::{U10,U12}; 
 
-use super::ecdhe::ECDHE; 
+use crate::schemes::key_exchange::ecdhe::ECDHE; 
+use crate::core::math::elliptic_curve::{EllipticCurve, Point};
+use crate::schemes::kdf::kdf2::derive;
 
 
 pub struct ECIES{

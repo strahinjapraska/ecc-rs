@@ -6,8 +6,8 @@ mod test{
 
     use num_bigint::BigUint; 
 
-    use cryptology::elliptic_curve::{EllipticCurve,Point}; 
-    use cryptology::ecdhe::ECDHE;    
+    use cryptology::core::math::elliptic_curve::{EllipticCurve,Point}; 
+    use cryptology::schemes::key_exchange::ecdhe::ECDHE;    
 
     
 

@@ -14,10 +14,16 @@ hmac="0.11.0"
 sha2="0.10.8" 
 aes = "0.8.3"
 ccm = "0.5.0"
+rand_chacha = "0.3.1"
 
 [[test]]
 name = "finite_field_tests"
 path = "src/tests/finite_field_tests.rs"
+
+
+[[test]]
+name = "ggm_tests"
+path = "src/tests/ggm_tests.rs"
 
 [[test]]
 name = "elliptic_curve_tests"

@@ -1,6 +1,7 @@
-use super::elliptic_curve::{EllipticCurve, Point}; 
+//use super::elliptic_curve{EllipticCurve, Point}; 
 use num_bigint::BigUint;  
-use super::utils::*; 
+use crate::core::math::elliptic_curve::{EllipticCurve, Point};
+use crate::utils::*; 
 
 pub struct ECDHE{
 

@@ -1,8 +1,8 @@
 #[cfg(test)]
 mod test{
     use num_bigint::BigUint;
-    use cryptology::ecdsa::*; 
-    use cryptology::elliptic_curve::*; 
+    use cryptology::schemes::signatures::ecdsa::*; 
+    use cryptology::core::math::elliptic_curve::*; 
 
     #[test]
     fn test_sign_verify(){

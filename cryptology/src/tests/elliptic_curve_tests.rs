@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod elliptic_curve_tests{
-    use cryptology::elliptic_curve::*; 
+    use cryptology::core::math::elliptic_curve::*; 
     use num_bigint::BigUint;
 
     

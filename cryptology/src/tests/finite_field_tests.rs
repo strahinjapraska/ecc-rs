@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod finite_field_tests{ 
-    use cryptology::finite_field::*;
+    use cryptology::core::math::finite_field::*;
     use num_bigint::BigUint;  
    
 

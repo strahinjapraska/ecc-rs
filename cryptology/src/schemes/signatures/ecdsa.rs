@@ -1,6 +1,6 @@
 use num_bigint::{BigUint, RandBigInt}; 
-use super::elliptic_curve::{EllipticCurve,Point};
-use super::finite_field::FiniteField; 
+use crate::core::math::elliptic_curve::{EllipticCurve,Point};
+use crate::core::math::finite_field::FiniteField; 
 use rand::{self};
 use sha256::digest; 
 

@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod test{
 
-    use cryptology::kdf2::*; 
+    use cryptology::schemes::kdf::kdf2::*; 
 
     #[test]
     fn test_kdf2_1(){

@@ -4,7 +4,7 @@ mod test{
 
 
     use num_bigint::BigUint; 
-    use cryptology::chaum_pedersen::*;
+    use cryptology::schemes::zkp::chaum_pedersen::ChaumPedersen;
     use cryptology::utils::*;  
 
 

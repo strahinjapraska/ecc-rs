@@ -1,5 +1,4 @@
-use num_bigint::BigUint; 
-
+use num_bigint::BigUint;
 pub struct FiniteField{
 
 
