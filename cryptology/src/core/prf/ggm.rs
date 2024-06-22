@@ -39,17 +39,12 @@ impl GGM{
 
     }
     fn g(&self, x: &Vec<u8>) -> Vec<u8>{
-        let length = x.len(); 
+        let seed: [u8; 32] = x.as_slice().try_into().expect("Length must be 32 bytes"); 
+        let mut prg = ChaCha20Rng::from_seed(seed); 
 
-        let mut hasher = Sha256::new();
-        hasher.update(x); 
-        let result = hasher.finalize();
+        let mut buffer = vec![0u8; 2*x.len()]; 
+        prg.fill_bytes(&mut buffer); 
 
-        let seed: [u8; 32] = result.as_slice().try_into().expect("Invalid length"); 
-
-        let mut rng = ChaCha20Rng::from_seed(seed); 
-        let mut buffer = vec![0u8; 2*length]; 
-        rng.fill_bytes(&mut buffer); 
         buffer 
     }
     
