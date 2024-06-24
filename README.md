@@ -2,12 +2,13 @@
 
 Implementation of Elliptic Curve Cryptography library in Rust.
 
-1. Elliptic curve in Weierstress form y^2 = x^3 + ax + b over Finite Field(Fp) 
+1. <b>Elliptic curves</b> in Weierstress form y^2 = x^3 + ax + b over Finite Field(Fp) 
 2. <b>ECDSA</b>(Elliptic Curve Digital Signature Algorithm)
 3. <b>ECDHE</b>(Ellpitic Curve Diffie Hellman Ephemeral [1] (use Elliptic curves with cofactor h = 1, e.g. NIST P-521 [3], more on this [2])
 4. <b>ECIES</b> (Elliptic Curve Integrated Encryption Scheme, [4]
 5. <b>KDF2</b> (Key derivation function 2), [5]
-6. <b>Chaum Pedersen </b> 
+6. <b>Chaum Pedersen </b>
+7. <b>GGM</b>(The Goldreich-Goldwasser-Micali Construction)[9]
 
 
 Run all tests: 
@@ -30,3 +31,4 @@ cargo test --test test_name --release
 6. https://github.com/conz27/crypto-test-vectors/tree/master
 7. https://www.rfc-editor.org/rfc/rfc5114.txt
 8. https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/component-testing
+9. https://crypto.stanford.edu/pbc/notes/crypto/ggm.html
