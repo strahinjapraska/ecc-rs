@@ -1,4 +1,4 @@
-# ecc-rs
+# ecception
 
 Implementation of Elliptic Curve Cryptography library in Rust.
 
